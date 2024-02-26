@@ -8,4 +8,28 @@
 /* Generics */
 body {
     font-family: "Kdam Thmor Pro", sans-serif;
+    background-color: rgba(142, 141, 141, 1);
+}
+
+/* Utils */
+
+
+/*? Main */
+.card {
+    height: 400px;
+    width: 300px;
+    cursor: pointer;
+}
+
+.card:hover {
+    scale: 1.05;
+}
+
+.card .card-image {
+    margin: 0 auto;
+}
+
+.card img {
+    width: 150px;
+    height: 150px;
 }
