@@ -13,7 +13,7 @@ $fish = new Category('Fish', '8ecae6', 'fa-solid fa-fish-fins');
 // Product Image
 $food_dog_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000';
 $food_dog_2_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg';
-$food_cat_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg';
+$food_cat_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/245336/almo-daily-menu-cat-400-gr-vitello.jpg';
 $food_fish_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/272714/tetra-guppy-mini-flakes.jpg';
 $accessory_bird_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/258384/voliera-wilma1.jpg';
 $accessory_fish_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/272741/tetra-easycrystal-filterpack-250-300.jpg';
