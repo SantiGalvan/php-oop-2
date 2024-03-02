@@ -1,24 +1,74 @@
 <?php
 
-require_once __DIR__ . '/Type.php';
+require_once __DIR__ . '/Category.php';
 
-class Product extends Type
+class Product
 {
-    public $product_title;
-    public $product_img;
-    public $product_price;
-    public $product_brand;
-    public $product_info;
-    public $product_type;
+    protected $id;
+    protected $name;
+    protected $image;
+    protected $price;
+    protected $category;
 
-    public function __construct($category, $type_name, $product_title, $product_img, $product_price, $product_brand, $product_info = null, $product_type = null)
+    public function __construct($name, $image, $price, Category $category)
     {
-        parent::__construct($category, $type_name);
-        $this->product_title = $product_title;
-        $this->product_img = $product_img;
-        $this->product_price = $product_price;
-        $this->product_brand = $product_brand;
-        $this->product_info = $product_info;
-        $this->product_type = $product_type;
+        $this->setId();
+        $this->setName($name);
+        $this->setImage($image);
+        $this->setPrice($price);
+        $this->setCategory($category);
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    private function setId()
+    {
+        $this->id = uniqid();
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    public function setCategory(Category $category)
+    {
+        if ($category instanceof Category) {
+            $this->category = $category;
+            return true;
+        } else return false;
     }
 }
