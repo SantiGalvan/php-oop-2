@@ -31,13 +31,13 @@ class FoodProduct extends Product
         $this->ingredients = $ingredients;
     }
 
-    public function getexpiration($as_string = true)
+    public function getExpiration($as_string = true)
     {
         if ($as_string) return date('d-m-Y', $this->expiration);
         return $this->expiration;
     }
 
-    public function setexpiration(string $expiration)
+    public function setExpiration(string $expiration)
     {
         $this->expiration = strtotime($expiration);
     }

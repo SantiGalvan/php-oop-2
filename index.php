@@ -1,37 +1,12 @@
 <?php
 
-require_once __DIR__ . '/models/Category.php';
-require_once __DIR__ . '/models/Type.php';
-require_once __DIR__ . '/models/Product.php';
+require_once __DIR__ . '/data/products.php';
 
-// Category
-$dog = new Category('Dog', 'bc6c25', 'fa-solid fa-dog');
-$cat = new Category('Cat', 'fefae0', 'fa-solid fa-cat');
-$bird = new Category('Bird', '606c38', 'fa-solid fa-dove');
-$fish = new Category('Fish', '8ecae6', 'fa-solid fa-fish-fins');
+// Creo tre array separati e filtrati
+$food_products = array_filter($products, fn ($p) => $p::$type === 'food');
+$toy_products = array_filter($products, fn ($p) => $p::$type === 'toy');
+$accessory_products = array_filter($products, fn ($p) => $p::$type === 'accessory');
 
-// Product Image
-$food_dog_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/284621/Mini-Adult.jpg?v=638182891693570000';
-$food_dog_2_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/245173/almo-nature-holistic-cane-adult-medium-pollo-e-riso.jpg';
-$food_cat_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/245336/almo-daily-menu-cat-400-gr-vitello.jpg';
-$food_fish_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/272714/tetra-guppy-mini-flakes.jpg';
-$accessory_bird_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/258384/voliera-wilma1.jpg';
-$accessory_fish_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/272741/tetra-easycrystal-filterpack-250-300.jpg';
-$toy_dog_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/256599/kong-classic1.jpg';
-$toy_cat_img = 'https://arcaplanet.vtexassets.com/arquivos/ids/223852/trixie-gatto-gioco-active-mouse-peluche.jpg';
-
-// Type & Product
-$food_dog = new Product($dog, 'Food', 'Royal Canin', $food_dog_img, 29, 'Royal Canin', 'Mini Adult');
-$food_dog_2 = new Product($dog, 'Food', 'Holistic Maintenance', $food_dog_2_img, 25, 'Almo Nature', 'Medium Large', 'Tonno e Riso');
-$food_cat = new Product($cat, 'Food', 'Cat Daily', $food_cat_img, 15, 'Almo Nature', 'Lattina');
-$food_fish = new Product($fish, 'Food', 'Guppy', $food_fish_img, 7, 'Tetra', 'Mangime per Pesci', 'Fiocchi');
-$accessory_bird = new Product($bird, 'Accessory', 'Voliera', $accessory_bird_img, 35, 'Wilma', 'In Legno');
-$accessory_fish = new Product($fish, 'Accessory', 'Cartucce Filtranti per Filtro EasyCrystal', $accessory_fish_img, 5, 'Tetra');
-$toy_dog = new Product($dog, 'Toy', 'Kong Classic', $toy_dog_img, 2, 'Kong');
-$toy_cat = new Product($cat, 'Toy', 'Topini di peluche Trixie', $toy_cat_img, 1, 'Trixie');
-
-// Array di prodotti
-$products = [$food_dog, $food_dog_2, $food_cat, $food_fish, $accessory_bird, $accessory_fish, $toy_dog, $toy_cat];
 ?>
 
 <!DOCTYPE html>
@@ -59,29 +34,51 @@ $products = [$food_dog, $food_dog_2, $food_cat, $food_fish, $accessory_bird, $ac
 
 <body>
 
-    <div class="container">
-        <div class="row row-gap-4 my-4 text-center">
-            <?php foreach ($products as $product) : ?>
-                <div class="col-3">
-                    <div style="background-color: #<?= $product->category->color ?>" class="card">
-                        <div class="card-image">
-                            <img src="<?= $product->product_img ?>" class="card-img-top" alt="<?= $product->product_title ?>">
+    <main>
+
+        <!-- Section Food -->
+        <section id="section-food">
+            <div class="container">
+                <h1 class="text-center my-5">Food <i class="<?= FoodProduct::$icon ?>" class="fa-2x"></i></h1>
+                <div class="row row-gap-4 my-4 text-center">
+                    <?php foreach ($food_products as $product) : ?>
+                        <div class="col-3">
+                            <?php include __DIR__ . '/includes/templates/cards/foodcard.php' ?>
                         </div>
-                        <i class="<?= $product->category->icon ?> fa-2x d-flex justify-content-center my-4"></i>
-                        <div class="card-body">
-                            <h5 class="card-title mb-2"><?= $product->product_title ?></h5>
-                            <p class="card-text mb-2"><?= $product->product_info ?></p>
-                            <div class="brand mb-2"><?= $product->product_brand ?></div>
-                            <div class="price">
-                                <i class="fa-solid fa-euro-sign"></i>
-                                <?= $product->product_price ?>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
+            </div>
+        </section>
+
+        <!-- Section Toy -->
+        <section id="section-toy">
+            <div class="container">
+                <h1 class="text-center my-5">Toys <i class="<?= ToyProduct::$icon ?>" class="fa-2x"></i></h1>
+                <div class="row row-gap-4 my-4 text-center">
+                    <?php foreach ($toy_products as $product) : ?>
+                        <div class="col-3">
+                            <?php include __DIR__ . '/includes/templates/cards/toycard.php' ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Accessory -->
+        <section id="section-accessory" class="pb-4">
+            <div class="container">
+                <h1 class="text-center my-5">Accessory <i class="<?= AccessoryProduct::$icon ?>" class="fa-2x"></i></h1>
+                <div class="row row-gap-4 my-4 text-center">
+                    <?php foreach ($accessory_products as $product) : ?>
+                        <div class="col-3">
+                            <?php include __DIR__ . '/includes/templates/cards/accessorycard.php' ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+    </main>
+
 </body>
 
 </html>
