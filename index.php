@@ -34,6 +34,21 @@ $accessory_products = array_filter($products, fn ($p) => $p::$type === 'accessor
 
 <body>
 
+    <header>
+        <div class="container d-flex justify-content-between">
+            <div class="title d-flex align-items-center">
+                <h1>E-commerce</h1>
+            </div>
+            <div class="nav d-flex">
+                <ul class="d-flex gap-4 h-100">
+                    <li class="d-flex align-items-center"><a href="#section-food">Food</a></li>
+                    <li class="d-flex align-items-center"><a href="#section-toy">Toys</a></li>
+                    <li class="d-flex align-items-center"><a href="#section-accessory">Accessory</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
     <main>
 
         <!-- Section Food -->

@@ -8,10 +8,48 @@
 /* Generics */
 body {
     font-family: "Kdam Thmor Pro", sans-serif;
-    background-color: rgba(142, 141, 141, 1);
+    background-color: #606c38;
 }
 
-/* Utils */
+h1 {
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/*? Header */
+header {
+    background-color: #283618;
+    color: rgb(190, 188, 188);
+}
+
+.title,
+.nav {
+    height: 100px;
+}
+
+.nav a {
+    color: rgb(190, 188, 188);
+    font-size: 25px;
+}
+
+.nav li {
+    padding-top: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s linear;
+}
+
+li:hover {
+    border-color: rgb(190, 188, 188);
+}
 
 
 /*? Main */
